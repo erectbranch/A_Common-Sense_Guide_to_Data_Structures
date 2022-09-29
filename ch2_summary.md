@@ -49,23 +49,27 @@
 
 ```Ruby
 def linear_search(array, value)
-# 배열의 모든 원소를 순회한다.
-array each do [element]
+    # 배열의 모든 원소를 순회한다.
+    array each do |element|
 
-# 원하는 값을 찾으면 반환한다.
-    if element == value
-        return value
 
-# 찾고 있던 값보다 큰 원소에 도달하면
-# 루프를 일찍 종료할 수 있다.
+    # 원하는 값(value)을 찾으면 반환한다.
+        if element == value
+            return value
 
-    elsif element > value
-        break
+
+    # 찾고 있던 값보다 큰 원소에 도달하면
+    # 루프를 일찍 종료한다.
+        elsif element > value
+            break
+            
+        end
+
     end
- end
 
-#배열에서 값을 찾지 못하면 널을 반환한다.
- return nil
+    #배열에서 값을 찾지 못하면 널을 반환한다.
+    return nil
+
 end
 
 ```
