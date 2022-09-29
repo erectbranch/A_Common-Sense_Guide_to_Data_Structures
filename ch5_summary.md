@@ -103,11 +103,17 @@ function selectionSort(array){
 
 ```Ruby
 def every_other(array)
+
+    # 두 원소마다 하나를 채워 넣을 새 배열
     new_array = []
 
     array.each_with_index do |element, index|
+        
+        # 인덱스가 짝수면 원소를 새 배열에 채워 넣는다
         new_array << element if index.even?
+    
     end
+
 
     return new_array
 
@@ -122,13 +128,18 @@ end
 
 ```Ruby
 def every_other(array)
+
+    # 짝수 인덱스마다 값을 채워 넣을 새 배열
     new_array = []
     index = 0
 
     while index < array.length
+
         new_array << array[index]
-        index += 2
+
+        index += 2  # 짝수 인덱스만 룩업한다.
     end
+
 
     return new_array
 

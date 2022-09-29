@@ -10,7 +10,6 @@ function blah(){
     blah();
 
 }
-
 ```
 이 경우 blah()가 자신을 호출하고, 또 blah()가 자신을 반복적으로 호출하면서 함수 자신을 무한대로 호출할 것이다. 이런 무한 함수 호출은 쓸모가 없고 위험하기까지 하지만, 재귀는 활용 가능성이 큰 강력한 도구다.
 
@@ -32,6 +31,7 @@ function countdown(number){
         console.log(i);
 
     }
+
 }
 
 countdown(10);
@@ -51,8 +51,8 @@ function countdown(number){
 }
 
 countdown(10)
-
 ```
+
 코드를 살펴보자
 
 1. countdown(10)을 호출하므로 인자 number에는 10이 들어 있다.
@@ -92,13 +92,20 @@ countdown 함수를 단꼐별로 이어서 살펴보자.
 
 ```Javascript
 function countdown(number){
+
     console.log(number);
     
+    // 기저 조건(숫자가 0이면 더 이상 countdown()을 호출하지 않는다.)
     if(number === 0) {
+
         return;
+
     } else {
+
         countdown(number - 1);
+    
     }
+
 }
 
 countdown(10);
@@ -200,8 +207,12 @@ NASA 카운트다운과 계승(factorial)을 처리하는 예제는 재귀로 �
 def find_directories(directory)
 
     # 바깥 디렉터리를 순회한다.
+    # Dir 클래스를 이용
     Dir.foreach(directory) do |filename|
 
+        # File 클래스를 이용
+        # File.directory?()는 인자가 디렉터리명이면 true를 반환, 아니면 false를 반환한다.
+        # .는 현재 디렉터리, ..는 부모 디렉터리
         if File.directory?("#{directory}/#{filename}") && filename != "." && filename != ".."
 
             puts "{directory}/#{filename}"
@@ -242,6 +253,7 @@ def find_directories(directory)
 
             puts "#{directory}/#{filename}"
             
+            # 하위 디렉터리에 동일한 루프를 시행한다.
             find_directories("#{directory}/#{filename}")
         
         end

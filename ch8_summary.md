@@ -77,27 +77,32 @@ class Linter
 
     end
 
+
+    # 텍스트를 받아 검사한다.
     def lint(text)
     
         # 텍스트 내 각 문자를 읽는 루프를 시작한다.
         text.each_char.with_index do |char, index|
 
-            if opening_brace?(char)
 
             # 문자가 여는 괄호면 스택에 push한다.
+            if opening_brace?(char)
+
                 @stack.push(char)
 
+            # 문자가 닫는 괄호면
             elsif closing_brace?(char)
 
+                # 그 닫는 괄호 문자가 가장 최근에 스택에 올라온 여는 괄호와 짝이면
                 if closes_most_recent_opening_brace?(char)
 
-            # 닫는 괄호 문자가 가장 최근에 나온 여는 괄호를 닫았다면
-            # 스택에서 해당 여는 괄호를 팝한다.
+                    # 확인이 되었으므로 스택에서 해당 여는 괄호를 팝한다.
                     @stack.pop
 
                 else 
             
-            # 닫는 괄호 문자가 가장 최근에 나온 여는 괄호를 닫지 않았다면
+                    # 닫는 괄호가 가장 최근에 스택에 올라온 여는 괄호와 짝이 아니라면
+                    # 어느 인덱스에 있는 닫는 괄호가 오류인지 알려준다.
                     @error = "Incorrect closing brace: #{char} at index #{index}"
 
                     return
@@ -106,38 +111,73 @@ class Linter
             end
         end
 
+
+        # 루프가 끝나고 텍스트 끝에 도달했는데 스택이 비어있지 않다면,
+        # 여는 괄호에 대응하는 닫는 괄호가 나오지 않은 것이다.
         if @stack.any?
 
-    # 줄 끝에 도달했는데 스택이 비어있지 않다면,
-    # 여는 괄호 대응하는 닫는 괄호가 나오지 않은 것이다.
-            @error = "# {@stack.last} does not have a closing brace"
+            # 오류: 스택 맨 위에 있는 여는 괄호에게 닫는 괄호가 없다.
+            @error = "#{@stack.last} does not have a closing brace"
 
         end
     end
 
 
     private
+    # 여는 괄호
     def opening_brace?(char)
         ["(", "[", "{"].include?(char)
     end
 
+    # 닫는 괄호
     def closing_brace?(char)
         [")", "]", "}"].include?(char)
     end
 
+    # 여는 괄호와 닫는 괄호의 짝(해시 테이블)
     def opening_brace_of(char)
         {")" => "(", "]" => "(", "}" => "{"}[char]
     end
 
+    # 가장 최근 스택에 push한 여는 괄호
     def most_recent_opening_brace
         @stack.last
     end
 
+    # 입력으로 받은 닫는 괄호가 최근 스택에 올라온 여는 괄호와 짝인가?
     def closes_most_recent_opening_brace?(char)
         opening_brace_of(char) == most_recent_opening_brace
     end
-end
 
+
+end
+```
+
+위 Linter 클래스는 다음과 같이 사용할 수 있다.
+
+```Ruby
+linter = Linter.new
+
+linter.lint("(var x = {y: [1,2,3]})")
+
+puts linter.error
+```
+
+괄호가 제대로 있으므로 어떤 오류도 반환하지 않는다. 하지만 실수로 마지막 문자 두 개를 뒤바꾸면 어떻게 될까?
+
+```Ruby
+linter = Linter.new
+
+linter.lint("(var x = {y: [1,2,3])}")
+
+puts linter.error
+```
+
+이렇게 하면 다음 메시지를 얻는다.
+
+
+```
+incorrect closing brace: ) at index 25
 ```
 
 
@@ -152,7 +192,7 @@ end
 큐도 마찬가지로 세 가지 제약을 포함한다.
 * 데이터는 큐의 끝에만 삽입할 수 있다. (스택과 동일)
 * 데이터는 큐의 앞에서만 읽을 수 있다. (스택과 정반대)
-* 데이터는 큐의 앞에서만 삭제될 수 있따. (스택과 정반대)
+* 데이터는 큐의 앞에서만 삭제될 수 있다. (스택과 정반대)
 
 
 ---
@@ -170,31 +210,41 @@ class PrintManager
         @queue = []
     end
 
+
     def queue_print_job(document)
-        #문서를 요청받으면 push
+
+        #문서를 요청받으면 해당 문서를 큐에 push한다.
         @queue.push(document)
+
     end
 
+
+    # 실행 시 큐에서 시프트를 시행하는 부분
     def run
+        
         while @queue.any?
-        # run을 하면
-        # 루비의 시프트 메서드는 배열의 첫 번째 원소를 삭제하고 반환한다.
-        print(@queue.shift)
+
+            # run을 하면
+            # 루비의 시프트 메서드는 배열의 첫 번째 원소를 삭제하고 반환한다.
+            print(@queue.shift)
+        
         end
+
     end
+
 
     private
 
+    # 실제 프린터를 실행시키는 코드다.
     def print(document)
     
-    # 실제 프린터를 실행시키는 코드다.
     # 데모용으로 터미널에 출력한다.
     puts document
     
     end
 
-end
 
+end
 ```
 
 위 클래스를 다음처럼 활용한다.
@@ -209,7 +259,6 @@ print_manager.queue_print_job("Second Document")
 print_manager.queue_print_job("Third Document")
 
 print_manager.run
-
 ```
 
 ---
