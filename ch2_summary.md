@@ -126,42 +126,44 @@ end
 ```Ruby
 def binary_search(array, value)
 
-# 먼저 찾으려는 값이 있을 수 있는 상한선과 하한선을 정한다.
-# 최초의 상한선은 배열의 첫번째 값, 하한선은 마지막 값이다.
+    # 먼저 찾으려는 값이 있을 수 있는 상한선과 하한선을 정한다.
+    # 최초의 상한선은 배열의 첫번째 값, 하한선은 마지막 값이다.
+    lower_bound = 0
+    upper_bound = array.length - 1
 
-lower_bound = 0
-upper_bound = array.length - 1
 
-# 상한선과 하한선 사이의 가운데 값을 계속해서 확인하는 루프를 시작한다.
-
+    # 상한선과 하한선의 가운데 값을 계속해서 확인하는 루프를 시작한다.
     while lower_bound <= upper_bound do
 
-# 상한선과 하한선 사이에 중간 지점을 찾는다.
-# (결괏값이 정수가 아닐까 걱정할 필요는 없다.
-# 루비는 정수를 나누기할 때 결과값을 가장 가까운 정수로 올림한다.)
+        # 상한선과 하한선 사이에 중간 지점을 찾는다.
+        # (결괏값이 정수가 아닐까 걱정할 필요는 없다.
+        # 루비는 정수를 나누기할 때 결과값을 가장 가까운 정수로 올림한다.)
+        midpoint = (upper_bound + lower_bound) / 2
 
-midpoint = (upper_bound + lower_bound) / 2
 
-# 중간 지점의 값을 확인한다.
+        # 중간 지점의 값을 확인한다.
+        value_at_midpoint = array[midpoint]
 
-value_at_midpoint = array[midpoint]
 
-# 중간 지점의 값이 찾던 값이면 검색을 마친다.
-# 그렇지 않다면 더 클지 작을지 추측한 바에 따라 상한선이나 하한선을 바꾼다.
+        if value < value_at_midpoint        # 중간값이 찾으려는 값보다 크면 
+            upper_bound = midpoint - 1      # 상한선을 중간값 바로 왼쪽 값으로.
+        
+        elsif value > value_at_midpoint     # 중간값이 찾으려는 값보다 작으면
+            lower_bound = midpoint + 1      # 하한선을 중간값 바로 오른쪽 값으로.
+        
+        elsif value == value_at_midpoint    # 중간값이 찾는 값이면
+            return midpoint                 # 중간값이 있는 지점을 반환한다.
 
-    if value < value_at_midpoint
-        upper_bound = midpoint - 1
-    elsif value > value_at_midpoint
-        lower_bound = midpoint + 1
-    elsif value == value_at_midpoint
-        return midpoint
+        end
+    
+    
     end
-   end
 
-# 상한선과 하한선이 같아질 때까지 경계값을 줄였다면
-# 찾고 있는 값이 이 배열 안에 없다는 것과 같다.
 
- return nil
+    # 상한선과 하한선이 같아질 때까지 경계값을 줄였다면
+    # 찾고 있는 값이 이 배열 안에 없다는 것과 같다.
+    return nil
+
 end
 ```
 
