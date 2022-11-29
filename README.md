@@ -2,7 +2,7 @@
   
 <h1 align="center">
   <p align="center">누구나 자료 구조와 알고리즘</p>
-  <a href="https://docusaurus.io">
+  <a href="https://www.gilbut.co.kr/book/view?bookcode=BN003234">
     <img width="50%" src="cover.jpg" />
   </a>
 </h1>
@@ -33,7 +33,7 @@
 
 ## :mag: 목차
 
-1장 자료 구조가 중요한 까닭
+### [1장 자료 구조가 중요한 까닭](https://github.com/erectbranch/A_Common-Sense_Guide_to_Data_Structures/tree/master/ch01)
 
     1.1 배열: 기초 자료 구조
 
@@ -50,7 +50,7 @@
     1.7 마무리
 
 
-2장 알고리즘이 중요한 까닭
+### [2장 알고리즘이 중요한 까닭](https://github.com/erectbranch/A_Common-Sense_Guide_to_Data_Structures/tree/master/ch02)
 
     2.1 정렬된 배열
 
@@ -63,7 +63,7 @@
     2.5 마무리
 
 
-3장 빅 오 표기법
+### [3장 빅 오 표기법](https://github.com/erectbranch/A_Common-Sense_Guide_to_Data_Structures/tree/master/ch03)
 
     3.1 빅 오: 단계 수 계산
 
@@ -82,7 +82,7 @@
     3.8 마무리
 
 
-4장 빅 오로 코드 속도 올리기
+### [4장 빅 오로 코드 속도 올리기](https://github.com/erectbranch/A_Common-Sense_Guide_to_Data_Structures/tree/master/ch04)
 
     4.1 버블 정렬
 
@@ -99,7 +99,7 @@
     4.7 마무리
 
 
-5장 빅 오를 사용하거나 사용하지 않는 코드 최적화
+### [5장 빅 오를 사용하거나 사용하지 않는 코드 최적화](https://github.com/erectbranch/A_Common-Sense_Guide_to_Data_Structures/tree/master/ch05)
 
     5.1 선택 정렬
 
@@ -118,7 +118,7 @@
     5.8 마무리
 
 
-6장 긍정적인 시나리오 최적화
+### [6장 긍정적인 시나리오 최적화](https://github.com/erectbranch/A_Common-Sense_Guide_to_Data_Structures/tree/master/ch06)
 
     6.1 삽입 정렬
 
@@ -135,7 +135,7 @@
     6.7 마무리
 
 
-7장 해시 테이블로 매우 빠른 룩업
+### [7장 해시 테이블로 매우 빠른 룩업](https://github.com/erectbranch/A_Common-Sense_Guide_to_Data_Structures/tree/master/ch07)
 
     7.1 해시 테이블 소개
 
@@ -152,7 +152,7 @@
     7.7 마무리
 
 
-8장 스택과 큐로 간결한 코드 생성
+### [8장 스택과 큐로 간결한 코드 생성](https://github.com/erectbranch/A_Common-Sense_Guide_to_Data_Structures/tree/master/ch08)
 
     8.1 스택
 
@@ -165,7 +165,7 @@
     8.5 마무리
 
 
-9장 재귀를 사용한 재귀적 반복
+### [9장 재귀를 사용한 재귀적 반복](https://github.com/erectbranch/A_Common-Sense_Guide_to_Data_Structures/tree/master/ch09)
 
     9.1 루프 대신 재귀
 
@@ -180,7 +180,7 @@
     9.6 마무리
 
 
-10장 속도를 높이는 재귀 알고리즘
+### [10장 속도를 높이는 재귀 알고리즘](https://github.com/erectbranch/A_Common-Sense_Guide_to_Data_Structures/tree/master/ch10)
 
     10.1 분할
 
@@ -195,7 +195,7 @@
     10.6 마무리
 
 
-11장 노드 기반 자료 구조
+### [11장 노드 기반 자료 구조](https://github.com/erectbranch/A_Common-Sense_Guide_to_Data_Structures/tree/master/ch11)
 
     11.1 연결 리스트
 
@@ -216,7 +216,7 @@
     11.9 마무리
 
 
-12장 이진 트리로 속도 향상
+### [12장 이진 트리로 속도 향상](https://github.com/erectbranch/A_Common-Sense_Guide_to_Data_Structures/tree/master/ch12)
 
     12.1 이진 트리
 
@@ -231,7 +231,7 @@
     12.6 마무리
 
 
-13장 그래프로 뭐든지 연결하기
+### [13장 그래프로 뭐든지 연결하기](https://github.com/erectbranch/A_Common-Sense_Guide_to_Data_Structures/tree/master/ch13)
 
     13.1 그래프
 
@@ -246,7 +246,7 @@
     13.6 마무리
 
 
-14장 공간 제약 다루기
+### [14장 공간 제약 다루기](https://github.com/erectbranch/A_Common-Sense_Guide_to_Data_Structures/tree/master/ch14)
 
     14.1 공간 복잡도에 빅 오 표기법 적용
 
